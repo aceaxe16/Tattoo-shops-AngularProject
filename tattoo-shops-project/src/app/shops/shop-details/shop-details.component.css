@@ -1,0 +1,15 @@
+.shop-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content:center;
+}
+
+.image-wrap{
+    width: 25em;
+}
+
+img{
+    width: 25em;
+    height: auto;
+}

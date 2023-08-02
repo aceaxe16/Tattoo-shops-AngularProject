@@ -15,4 +15,9 @@ export class ApiService {
     const {appUrl} = environment;
     return this.http.get<Shop[]>(`${appUrl}/tattoo_shops`)
   }
+
+  getOneTattooShop(id: string){
+    const {appUrl} = environment;
+    return this.http.get<Shop>(`${appUrl}/tattoo_shops/${id}`)
+  }
 }
