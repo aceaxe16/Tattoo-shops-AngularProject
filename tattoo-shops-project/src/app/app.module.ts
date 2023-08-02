@@ -5,24 +5,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { HomeComponent } from './home/home.component';
-import { ShopsGalleryComponent } from './shops-gallery/shops-gallery.component';
-import { ShopDetailsComponent } from './shop-details/shop-details.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ShopsModule } from './shops/shops.module';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    ShopsGalleryComponent,
-    ShopDetailsComponent,
+    HomeComponent,  
     
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CoreModule
+    CoreModule,
+    HttpClientModule,
+    ShopsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

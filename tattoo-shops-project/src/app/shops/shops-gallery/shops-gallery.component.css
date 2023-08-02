@@ -1,0 +1,18 @@
+.all-shops{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    gap: 2em;
+   
+}
+
+.shop-image{
+    width: 25em;
+    
+    
+}
+
+img{
+    height: auto;
+    width: 25em;
+}

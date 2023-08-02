@@ -1,0 +1,16 @@
+<main>
+    <div class="all-shops">
+        <div *ngFor="let shop of allShops"  class="shop-container">
+            <div class="shop-name-wrapper">
+                <p class="shop-name">{{shop.shopName}}</p>
+            </div>
+            <div class="shop-image">
+                <img src="{{shop.imageUrl}}" alt="no image availiable yet">
+            </div>
+            <div class="raiting wrapper">
+                <p class="shop-raiting">{{shop.Raiting}}/5.00</p>
+            </div>
+            <button class="details-button">More details</button>
+        </div>
+    </div>
+</main>
