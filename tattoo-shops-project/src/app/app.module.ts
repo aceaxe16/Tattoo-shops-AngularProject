@@ -7,14 +7,14 @@ import { CoreModule } from './core/core.module';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ShopsModule } from './shops/shops.module';
+import { UserModule } from './user/user.module';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,  
-    
+    HomeComponent,   
     
   ],
   imports: [
@@ -22,7 +22,8 @@ import { ShopsModule } from './shops/shops.module';
     AppRoutingModule,
     CoreModule,
     HttpClientModule,
-    ShopsModule
+    ShopsModule,
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
