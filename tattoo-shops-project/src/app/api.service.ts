@@ -13,11 +13,11 @@ export class ApiService {
 
   getTattooShops(){
     const {appUrl} = environment;
-    return this.http.get<Shop[]>(`${appUrl}/tattoo_shops`)
+    return this.http.get<Shop[]>(`${appUrl}/data/tattoo_shops`)
   }
 
   getOneTattooShop(id: string){
     const {appUrl} = environment;
-    return this.http.get<Shop>(`${appUrl}/tattoo_shops/${id}`)
+    return this.http.get<Shop>(`${appUrl}/data/tattoo_shops/${id}`)
   }
 }

@@ -1,28 +1,33 @@
 <div class="container">
-    <fieldset>
-        <h2>Login Form</h2>
-        <p>
-            <label for="email"><span><i> </i></span></label>
-            <input 
-            type="email"
-            name="email"
-            >
-        </p>
-
-        <p>
-            <label for="password"><span><i></i></span></label>
-            <input 
-            type="password"
-            name="password"
-            >
-        </p>
-
-       <button>Login</button>
-
-       <p>
-        Dont have an account?
-        <a routerLink="/register">Register</a>
-       </p>
-
-    </fieldset>
+    <form class="login" [formGroup]="form" (ngSubmit)="login()">
+        <fieldset>
+            <h2>Login Form</h2>
+            <p>
+                <label for="email"><span><i> </i></span></label>
+                <input 
+                type="email"
+                name="email"
+                formControlName="email"
+                >
+            </p>
+    
+            <p>
+                <label for="password"><span><i></i></span></label>
+                <input 
+                type="password"
+                name="password"
+                formControlName="password"
+                >
+            </p>
+    
+           <button>Login</button>
+    
+           <p>
+            Dont have an account?
+            <a routerLink="/register">Register</a>
+           </p>
+    
+        </fieldset>
+    </form>
+   
 </div>

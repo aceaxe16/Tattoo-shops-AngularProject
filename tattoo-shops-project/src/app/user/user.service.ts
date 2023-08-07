@@ -19,6 +19,8 @@ export class UserService implements OnDestroy{
   constructor(private http: HttpClient) {
     this.subscription = this.user$.subscribe((user) => {
       this.user = user;
+      
+      
     })
    }
    
@@ -30,12 +32,33 @@ export class UserService implements OnDestroy{
     )
     { 
       const {appUrl} = environment;
-      return this.http.post<User>(`${appUrl}/Users`, {
+      return this.http.post<User>(`${appUrl}/users/register`, {
         username,
         email,
         password        
+      },
+      {
+        headers: {
+         "Content-Type":"application/json"
+        }
       }).pipe(tap((user) => this.user$$.next(user)));
 
+      
+      
+
+  }
+
+  login(email: string, password: string){
+    const {appUrl} = environment;
+      return this.http.post<User>(`${appUrl}/users/login`, {        
+        "login" : email,
+        "password": password        
+      },
+      {
+        headers: {
+         "Content-Type":"application/json"
+        }
+      }).pipe(tap((user) => this.user$$.next(user)));
   }
 
   ngOnDestroy(): void {

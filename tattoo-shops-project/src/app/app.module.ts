@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ShopsModule } from './shops/shops.module';
 import { UserModule } from './user/user.module';
+import { appIntercentorProvider } from './app.interceptor';
 
 
 
@@ -25,7 +26,7 @@ import { UserModule } from './user/user.module';
     ShopsModule,
     UserModule
   ],
-  providers: [],
+  providers: [appIntercentorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
