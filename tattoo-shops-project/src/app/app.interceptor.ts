@@ -12,30 +12,26 @@ export class AppInterceptor implements HttpInterceptor{
     constructor(private router:Router){}
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        const {appUrl} = environment
-        if(req.url.startsWith(`/users`)){
-            console.log(req.url);
-            
-            req = req.clone({                
-                withCredentials: true
-            })
-
-            console.log(req.url);
-            
+        
+        // req = req.clone({
+        //     withCredentials: true,
+        //   });
+      
+          return next.handle(req);
         }
 
-        return next.handle(req).pipe(
-            catchError((err) => {
-                if(err.statue === 401){
-                    this.router.navigate(['/login'])
-                }
-                return [err]
-            })
+        // return next.handle(req).pipe(
+        //     catchError((err) => {
+        //         if(err.statue === 401){
+        //             this.router.navigate(['/home'])
+        //         }
+        //         return [err]
+        //     })
 
 
-        )
+        // )
     }
-}
+
 
 
 export const appIntercentorProvider: Provider ={
