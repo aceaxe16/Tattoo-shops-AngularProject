@@ -2,27 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
 import { User } from '../types/user';
 import { BehaviorSubject, Subscription, tap } from 'rxjs';
-import { environment } from '../environment/entironment';
+import { environment } from '../environment/authenticationEnvironment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService implements OnDestroy{
-  private user$$ = new BehaviorSubject<User | undefined>(undefined);
-  private user$ = this.user$$.asObservable();
-  user: User | undefined;
-
-  subscription: Subscription;
-  
-
-
-  constructor(private http: HttpClient) {
-    this.subscription = this.user$.subscribe((user) => {
-      this.user = user;
-      
-      
-    })
-   }
+export class UserService {
+  constructor(private http: HttpClient){}
    
 
   register(
@@ -31,37 +17,23 @@ export class UserService implements OnDestroy{
     password: string, 
     )
     { 
-      const {appUrl} = environment;
-      return this.http.post<User>(`${appUrl}/users/register`, {
+      const {apiUrl} = environment;
+      return this.http.post<any>(`${apiUrl}/register`, {
         username,
         email,
         password        
-      },
-      {
-        headers: {
-         "Content-Type":"application/json"
-        }
-      }).pipe(tap((user) => this.user$$.next(user)));
-
-      
-      
-
-  }
+      })
+    }
 
   login(email: string, password: string){
-    const {appUrl} = environment;
-      return this.http.post<User>(`${appUrl}/users/login`, {        
-        "login" : email,
-        "password": password        
-      },
-      {
-        headers: {
-         "Content-Type":"application/json"
-        }
-      }).pipe(tap((user) => this.user$$.next(user)));
+    const {apiUrl} = environment;
+      return this.http.post<any>(`${apiUrl}/login`, {        
+        email,
+        password        
+      })
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
+  // ngOnDestroy(): void {
+  //   this.subscription.unsubscribe();
+  // }
 }

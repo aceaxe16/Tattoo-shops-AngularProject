@@ -24,8 +24,11 @@ export class LoginComponent {
 
     const {email, password} = this.form.value;
 
-    this.userService.login(email!, password!).subscribe(()=>{
-      this.router.navigate(['/shops'])
+    this.userService.login(email!, password!).subscribe((res)=>{
+      if(res){
+        localStorage.setItem('token', res.token)
+        this.router.navigate(['/shops'])
+      }
     })
   }
 }

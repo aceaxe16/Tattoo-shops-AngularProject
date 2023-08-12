@@ -17,8 +17,11 @@ export class RegisterComponent {
     }
 
    const {username, email, password} = form.value
-   this.userService.register(username, email, password).subscribe(() =>{
-    this.router.navigate(['/shops'])
+   this.userService.register(username, email, password).subscribe((res) =>{
+    if(res){
+      localStorage.setItem('token', res.token)
+      this.router.navigate(['/shops'])
+    }
    })
    
     
