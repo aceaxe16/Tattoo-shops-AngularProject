@@ -2,10 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ShopsGalleryComponent } from './shops-gallery/shops-gallery.component';
 import { ShopDetailsComponent } from './shop-details/shop-details.component';
+import { CreateNewShopComponent } from './create-new-shop/create-new-shop.component';
+import { AuthGuard } from '../auth.guard';
 
 
 
-const routes: Routes = [{
+const routes: Routes = [
+    {
     path:"shops",
     children:[
         {
@@ -19,6 +22,11 @@ const routes: Routes = [{
         }
         
     ],
+},
+{
+    path:'create-shop',
+    component: CreateNewShopComponent,
+    canActivate: [AuthGuard]
 }
   
 ];

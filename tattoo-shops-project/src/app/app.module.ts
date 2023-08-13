@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ShopsModule } from './shops/shops.module';
 import { UserModule } from './user/user.module';
 import { appIntercentorProvider } from './app.interceptor';
+import { AuthGuard } from './auth.guard';
 
 
 
@@ -26,7 +27,7 @@ import { appIntercentorProvider } from './app.interceptor';
     ShopsModule,
     UserModule
   ],
-  providers: [appIntercentorProvider],
+  providers: [appIntercentorProvider, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

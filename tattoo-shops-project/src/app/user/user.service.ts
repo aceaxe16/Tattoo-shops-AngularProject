@@ -33,6 +33,10 @@ export class UserService {
       })
   }
 
+  isLoggedIn(){
+    return !!localStorage.getItem('token')
+  }
+
   // ngOnDestroy(): void {
   //   this.subscription.unsubscribe();
   // }
