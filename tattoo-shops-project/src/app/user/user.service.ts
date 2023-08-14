@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
 import { User } from '../types/user';
 import { BehaviorSubject, Subscription, tap } from 'rxjs';
-import { environment } from '../environment/authenticationEnvironment';
+import { authenticationEnvironmentn } from '../environment/authenticationEnvironment';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class UserService {
     password: string, 
     )
     { 
-      const {apiUrl} = environment;
+      const {apiUrl} = authenticationEnvironmentn;
       return this.http.post<any>(`${apiUrl}/register`, {
         username,
         email,
@@ -26,7 +26,7 @@ export class UserService {
     }
 
   login(email: string, password: string){
-    const {apiUrl} = environment;
+    const {apiUrl} = authenticationEnvironmentn;
       return this.http.post<any>(`${apiUrl}/login`, {        
         email,
         password        
@@ -35,6 +35,10 @@ export class UserService {
 
   isLoggedIn(){
     return !!localStorage.getItem('token')
+  }
+
+  getToken(){
+    return localStorage.getItem('token')
   }
 
   // ngOnDestroy(): void {
