@@ -22,7 +22,7 @@ export class AppInterceptor implements HttpInterceptor{
             },
           });
         let token = this.userService.getToken();  
-        debugger
+        
           
       
           return next.handle(req);

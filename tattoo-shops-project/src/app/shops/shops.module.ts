@@ -4,6 +4,7 @@ import { ShopDetailsComponent } from './shop-details/shop-details.component';
 import { ShopsGalleryComponent } from './shops-gallery/shops-gallery.component';
 import { ShopsRoutingModule } from './shops-routing.module';
 import { CreateNewShopComponent } from './create-new-shop/create-new-shop.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -15,7 +16,9 @@ import { CreateNewShopComponent } from './create-new-shop/create-new-shop.compon
   ],
   imports: [
     CommonModule,
-    ShopsRoutingModule
+    ShopsRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 

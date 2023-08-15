@@ -1,5 +1,4 @@
-const express = require('express');
-const router = express.Router();
+const router = require('express').Router();
 
 const jwt = require('jsonwebtoken');
 
@@ -10,9 +9,8 @@ const db = 'mongodb+srv://branimir88:vgxRxOYslloFK25F@cluster0.98gga50.mongodb.n
 
 mongoose.connect(db);
 
-
 router.get('/', (req, res) => {
-    res.send(!!mongoose.connect(db) + "  Hello from api route")
+    res.send("Hello from api route")
 })
 
 router.post('/register', (req, res) => {

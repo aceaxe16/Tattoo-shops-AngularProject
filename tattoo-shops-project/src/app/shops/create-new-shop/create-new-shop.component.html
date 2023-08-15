@@ -1,1 +1,30 @@
-<p>create-new-shop works!</p>
+<div class="container">
+    <form class="login" [formGroup]="from" (ngSubmit)="createShop()">
+        <fieldset>
+            <h2>Create Shop</h2>
+            <p>
+                <label for="name"><span><i> </i></span></label>
+                <input 
+                type="text"
+                name="name"
+                formControlName="name"
+                >
+            </p>
+    
+            <p>
+                <label for="description"><span><i></i></span></label>
+                <input 
+                type="text"
+                name="description"
+                formControlName="description"
+                >
+            </p>
+    
+           <button>Create</button>
+    
+           
+    
+        </fieldset>
+    </form>
+   
+</div>
