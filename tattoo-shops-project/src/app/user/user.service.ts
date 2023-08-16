@@ -8,8 +8,11 @@ import { authenticationEnvironmentn } from '../environment/authenticationEnviron
   providedIn: 'root'
 })
 export class UserService {
-  constructor(private http: HttpClient){}
-   
+
+  constructor(private http: HttpClient){
+  }
+
+  
 
   register(
     username: string, 
@@ -22,7 +25,7 @@ export class UserService {
         username,
         email,
         password        
-      })
+      }) 
     }
 
   login(email: string, password: string){
@@ -30,7 +33,7 @@ export class UserService {
       return this.http.post<any>(`${apiUrl}/login`, {        
         email,
         password        
-      })
+      }) 
   }
 
   isLoggedIn(){

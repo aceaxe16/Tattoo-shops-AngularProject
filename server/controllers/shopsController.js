@@ -15,15 +15,19 @@ mongoose.connect(db);
 
 
 router.get('/create', (req, res) => {
+
     res.send("Hello from create route")
 })
 
 //Add tokenVerify
-router.post('/create', async(req, res) => {
+router.post('/create', verifyToken, async(req, res) => {
     const shopData = req.body;
+    const user = req.userId;
+    // res.status(200).send({shopData, user})
+   
+    
     try{
-        await  shopService.create(req.user._id, shopData);
-        const userId = req.user._id
+        await  shopService.create(req.userId, shopData);        
         res.status(200).send(shopData)
 
     }catch(error){

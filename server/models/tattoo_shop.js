@@ -4,9 +4,8 @@ const mongoose = require('mongoose');
 
 
 const tattooShopSchema = new mongoose.Schema({
-    imageUrl: String,
-    raiting: String,
-    shopName: String,
+    name: String,
+    imageUrl: String,    
     ownerId: String
 })
 

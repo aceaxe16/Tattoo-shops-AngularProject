@@ -10,7 +10,7 @@ import { ShopService } from 'src/app/shop-services/shopServices.service';
 export class CreateNewShopComponent {
   from = this.fb.group({
     name:[''],
-    description:['']
+    imageUrl:['']
   })
   constructor(private fb: FormBuilder, private shopService: ShopService){}
 
@@ -18,10 +18,10 @@ export class CreateNewShopComponent {
     if(this.from.invalid){return}
     const {
       name,
-      description
+      imageUrl
     } = this.from.value;
 
-    this.shopService.createShop(name!, description!).subscribe((res) => {
+    this.shopService.createShop(name!, imageUrl!).subscribe((res) => {
       console.log(res);
       
     })

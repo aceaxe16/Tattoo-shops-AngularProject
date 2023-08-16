@@ -10,11 +10,11 @@ export class ShopService {
   constructor(private http: HttpClient) { }
 
   //Add _ownerId
-  createShop(name:string, description: string){
+  createShop(name:string, imageUrl: string){
     const {localServerShops} = environment;
     return this.http.post<any>(`${localServerShops}/create`, {
       name,
-      description,
+      imageUrl,
              
     })
   }
