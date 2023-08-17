@@ -14,16 +14,20 @@ const db = 'mongodb+srv://branimir88:vgxRxOYslloFK25F@cluster0.98gga50.mongodb.n
 mongoose.connect(db);
 
 
-router.get('/create', (req, res) => {
+router.get('/catalog', async(req, res) => {
+    const shops = await shopService.getAll();  
+    if(shops){
+        res.status(200).send({shops})
+    }else{
+        res.status(400).send("Error: " + shops);
+    }
 
-    res.send("Hello from create route")
+    
 })
 
 //Add tokenVerify
 router.post('/create', verifyToken, async(req, res) => {
-    const shopData = req.body;
-    const user = req.userId;
-    // res.status(200).send({shopData, user})
+    const shopData = req.body;  
    
     
     try{

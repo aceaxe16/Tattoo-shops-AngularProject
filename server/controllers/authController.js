@@ -7,6 +7,8 @@ const User = require('../models/user');
 const mongoose = require('mongoose');
 const db = 'mongodb+srv://branimir88:vgxRxOYslloFK25F@cluster0.98gga50.mongodb.net/?retryWrites=true&w=majority'
 
+
+
 mongoose.connect(db);
 
 router.get('/', (req, res) => {

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ShopService } from 'src/app/shop-services/shopServices.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class CreateNewShopComponent {
     name:[''],
     imageUrl:['']
   })
-  constructor(private fb: FormBuilder, private shopService: ShopService){}
+  constructor(private fb: FormBuilder, private router:Router, private shopService: ShopService){}
 
   createShop():void{
     if(this.from.invalid){return}
@@ -22,7 +23,7 @@ export class CreateNewShopComponent {
     } = this.from.value;
 
     this.shopService.createShop(name!, imageUrl!).subscribe((res) => {
-      console.log(res);
+      this.router.navigate(['/shops']);
       
     })
     
