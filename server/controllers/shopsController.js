@@ -20,9 +20,17 @@ router.get('/catalog', async(req, res) => {
         res.status(200).send(shops)
     }else{
         res.status(400).send("Error: " + shops);
-    }
+    }   
+})
 
-    
+router.get('/:shopId/details', async(req, res) => {
+    const shop = await shopService.getOne(req.params.shopId);       
+
+    if(shop){
+        res.status(200).send(shop)
+    }else{
+        res.status(400).send('Error: ' + shop)
+    }
 })
 
 //Add tokenVerify
