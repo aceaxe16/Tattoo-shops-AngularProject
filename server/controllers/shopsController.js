@@ -17,7 +17,7 @@ mongoose.connect(db);
 router.get('/catalog', async(req, res) => {
     const shops = await shopService.getAll();  
     if(shops){
-        res.status(200).send({shops})
+        res.status(200).send(shops)
     }else{
         res.status(400).send("Error: " + shops);
     }

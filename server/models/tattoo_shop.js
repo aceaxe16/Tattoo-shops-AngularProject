@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const tattooShopSchema = new mongoose.Schema({
     name: String,
     imageUrl: String,    
-    ownerId: {
+    owner: {
         type: mongoose.Types.ObjectId,
         ref: "User",
     }

@@ -12,8 +12,8 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getTattooShops(){
-    const {appUrl} = environment;
-    return this.http.get<Shop[]>(`${appUrl}/data/tattoo_shops`)
+    const {localServerShops} = environment;
+    return this.http.get<Shop[]>(`${localServerShops}/catalog`)
   }
 
   getOneTattooShop(id: string){

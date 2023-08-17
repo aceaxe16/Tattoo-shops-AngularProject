@@ -1,10 +1,9 @@
-export interface Shop{
-    "created": number,
+import {Owner} from './owner'
+
+export interface Shop {
+    "_id": string,
+    "name": string,
     "imageUrl": string,
-    "___class": string,
-    "shopName": string,
-    "Raiting": number,
-    "ownerId": string,
-    "updated": number,
-    "objectId": string
+    "owner": Owner,
+    "__v": number
 }

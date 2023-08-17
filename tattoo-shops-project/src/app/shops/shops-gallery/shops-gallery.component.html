@@ -2,15 +2,15 @@
     <div class="all-shops">
         <div *ngFor="let shop of allShops"  class="shop-container">
             <div class="shop-name-wrapper">
-                <p class="shop-name">{{shop.shopName}}</p>
+                <p class="shop-name">{{shop.name}}</p>
             </div>
             <div class="shop-image">
                 <img src="{{shop.imageUrl}}" alt="no image availiable yet">
             </div>
-            <div class="raiting wrapper">
+            <!-- <div class="raiting wrapper">
                 <p class="shop-raiting">{{shop.Raiting}}/5.00</p>
-            </div>
-            <a  class="details-btn" [routerLink]="shop.objectId">More Details</a>
+            </div> -->
+            <a  class="details-btn" [routerLink]="shop._id">More Details</a>
         </div>
     </div>
 </main>
