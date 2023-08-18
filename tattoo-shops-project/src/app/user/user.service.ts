@@ -44,6 +44,10 @@ export class UserService implements OnDestroy{
       }).pipe(tap((user) => this.user$$.next(user))) 
   }
 
+  logout(){
+    localStorage.removeItem('token');    
+  }
+
   isLoggedIn():boolean{
     return !!localStorage.getItem('token')
   }

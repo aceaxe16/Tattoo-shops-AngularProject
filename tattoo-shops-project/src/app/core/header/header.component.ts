@@ -18,5 +18,8 @@ export class HeaderComponent {
     return this.userService.user?.username || ""
   }
 
-  
+  logout(): void{
+    this.userService.logout();
+    this.router.navigate(['/home'])
+  }
 }

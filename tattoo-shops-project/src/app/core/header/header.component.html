@@ -4,7 +4,7 @@
             <p class="logo"><span>Tattoo Shops</span></p>
         </div>
         <div class="mini-navbar">
-            <ul>
+            <ul *ngIf="!isLoggedIn">
                 <li>
                     <a routerLink="/login">Login</a>
                 </li>
@@ -12,11 +12,11 @@
                     <a routerLink="/register">Register</a>
                 </li>
             </ul>
-            <ul>
+            <ul *ngIf="isLoggedIn">
                 <li>
                     <a routerLink="/profile">Profile</a>
                 </li>
-                <li>
+                <li (click)="logout()">
                     <a>Logout</a>
                 </li>
             </ul>
@@ -30,7 +30,7 @@
             <li>
                 <a routerLink="/shops">Shops</a>
             </li>
-            <li>
+            <li *ngIf="isLoggedIn">
                 <a routerLink="/create-shop">Create Shop</a>
             </li>
         </ul>
