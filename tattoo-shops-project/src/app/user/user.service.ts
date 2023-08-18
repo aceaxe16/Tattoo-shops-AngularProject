@@ -10,8 +10,7 @@ import { authenticationEnvironmentn } from '../environment/authenticationEnviron
 export class UserService implements OnDestroy{
   private user$$ = new BehaviorSubject<User | undefined>(undefined);
   public user$ = this.user$$.asObservable();
-
-  user: User | undefined;
+  user: User | undefined; 
   subscription: Subscription;
 
   constructor(private http: HttpClient){
@@ -33,7 +32,7 @@ export class UserService implements OnDestroy{
         username,
         email,
         password        
-      }).pipe(tap((user) => this.user$$.next(user))) 
+      }).pipe(tap((res) => this.user$$.next(res.registeredUser)))
     }
 
   login(email: string, password: string){
@@ -41,11 +40,24 @@ export class UserService implements OnDestroy{
       return this.http.post<any>(`${apiUrl}/login`, {        
         email,
         password        
-      }).pipe(tap((user) => this.user$$.next(user))) 
+      }).pipe(tap((res) => this.user$$.next(res.user)));
   }
 
   logout(){
     localStorage.removeItem('token');    
+  }
+
+
+  getProfile() {
+    const {apiUrl} = authenticationEnvironmentn;
+    return this.http
+      .get<User>(`${apiUrl}/profile`);
+  }
+
+  updateProfile(username: string, email: string) {
+    const {apiUrl} = authenticationEnvironmentn;
+    return this.http
+      .put<User>(`${apiUrl}/update`, { username, email,});
   }
 
   isLoggedIn():boolean{
@@ -55,7 +67,7 @@ export class UserService implements OnDestroy{
   getToken(){
     return localStorage.getItem('token')
   }
-
+ 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }

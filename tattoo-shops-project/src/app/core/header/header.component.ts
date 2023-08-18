@@ -12,11 +12,7 @@ export class HeaderComponent {
 
   get isLoggedIn():boolean{
     return this.userService.isLoggedIn()
-  }
-
-  get username(): string{
-    return this.userService.user?.username || ""
-  }
+  }  
 
   logout(): void{
     this.userService.logout();

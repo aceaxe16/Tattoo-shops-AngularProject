@@ -1,1 +1,46 @@
-<p>profile works!</p>
+<div class="profile">
+  <div class="profile-data">
+    <div class="profile_img">
+      <div class="image">
+        <img src="../../../assets/profile.png" alt="img8" />
+      </div>
+    </div>
+    <ng-container *ngIf="!isEditMode">
+      <div class="personal">
+        <div class="edit">
+          <p class="email">{{ profileDetails.email }}</p>
+          <p>{{ profileDetails.username }}</p>
+        </div>
+        <div class="data"></div>
+        <!-- User Email Address -->
+      </div>
+      <button (click)="toggleEditMode()">Edit</button>
+    </ng-container>
+
+    <ng-container *ngIf="isEditMode">
+        <form [formGroup]="form" (ngSubmit)="saveProfileHandler()">
+            <div class="flex">
+                <p>Username:</p>
+                <input 
+                type="text"
+                name="username"
+                id="username"
+                formControlName="username"
+                >
+            </div>
+
+
+            <div class="flex">
+                <p>Email: </p>
+                <input 
+                type="email" 
+                name="email" 
+                id="email"                    
+                formControlName="email"                
+                >
+            </div>
+            <button class="green-button">Save</button>
+        </form>
+    </ng-container>
+  </div>
+</div>

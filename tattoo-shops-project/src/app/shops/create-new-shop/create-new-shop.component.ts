@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ShopService } from 'src/app/shop-services/shopServices.service';
+import { ShopService } from 'src/app/shops/shopServices.service';
 
 @Component({
   selector: 'app-create-new-shop',

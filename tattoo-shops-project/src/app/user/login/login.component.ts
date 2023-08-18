@@ -27,7 +27,7 @@ export class LoginComponent {
     this.userService.login(email!, password!).subscribe((res)=>{
       if(res){
         localStorage.setItem('token', res.token)
-        console.log(res.user);
+        
         
         this.router.navigate(['/shops'])
       }

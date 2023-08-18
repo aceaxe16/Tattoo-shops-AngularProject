@@ -16,7 +16,7 @@ export class ShopsGalleryComponent implements OnInit {
   ngOnInit(): void {
     this.apiService.getTattooShops().subscribe(shops => {
       this.allShops = shops
-      console.log(this.allShops);
+      
       
     })
   }
