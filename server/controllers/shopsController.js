@@ -24,10 +24,11 @@ router.get('/catalog', async(req, res) => {
 })
 
 router.get('/:shopId/details', async(req, res) => {
-    const shop = await shopService.getOne(req.params.shopId);       
+    const shop = await shopService.getOne(req.params.shopId);
+    const userId = req.userId;       
 
     if(shop){
-        res.status(200).send(shop)
+        res.status(200).send({shop, userId})
     }else{
         res.status(400).send('Error: ' + shop)
     }

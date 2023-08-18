@@ -26,7 +26,7 @@ const routes: Routes = [
 {
     path:'create-shop',
     component: CreateNewShopComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
 }
   
 ];

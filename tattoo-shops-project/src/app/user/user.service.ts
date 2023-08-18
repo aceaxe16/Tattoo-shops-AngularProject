@@ -7,9 +7,17 @@ import { authenticationEnvironmentn } from '../environment/authenticationEnviron
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UserService implements OnDestroy{
+  private user$$ = new BehaviorSubject<User | undefined>(undefined);
+  public user$ = this.user$$.asObservable();
+
+  user: User | undefined;
+  subscription: Subscription;
 
   constructor(private http: HttpClient){
+    this.subscription = this.user$.subscribe((user) => {
+      this.user = user;
+    });
   }
 
   
@@ -25,7 +33,7 @@ export class UserService {
         username,
         email,
         password        
-      }) 
+      }).pipe(tap((user) => this.user$$.next(user))) 
     }
 
   login(email: string, password: string){
@@ -33,10 +41,10 @@ export class UserService {
       return this.http.post<any>(`${apiUrl}/login`, {        
         email,
         password        
-      }) 
+      }).pipe(tap((user) => this.user$$.next(user))) 
   }
 
-  isLoggedIn(){
+  isLoggedIn():boolean{
     return !!localStorage.getItem('token')
   }
 
@@ -44,7 +52,7 @@ export class UserService {
     return localStorage.getItem('token')
   }
 
-  // ngOnDestroy(): void {
-  //   this.subscription.unsubscribe();
-  // }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 }

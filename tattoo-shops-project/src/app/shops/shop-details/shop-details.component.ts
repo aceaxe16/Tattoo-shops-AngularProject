@@ -19,8 +19,8 @@ export class ShopDetailsComponent implements OnInit{
 
   getShopInfo():void{
     const shopId = this.activeRoute.snapshot.params['shopId'];
-    this.apiService.getOneTattooShop(shopId).subscribe((shop) => {
-      this.shop = shop;
+    this.apiService.getOneTattooShop(shopId).subscribe((res) => {
+      this.shop = res.shop;
       
       
     })
