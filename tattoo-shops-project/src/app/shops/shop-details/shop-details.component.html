@@ -1,14 +1,16 @@
 <div *ngIf="shop" class="shop-container">
-    <div class="name-wrap">
-        <p class="shop-name">{{shop.name}}</p>
-    </div>
-    <div class="image-wrap">
-        <img src="{{shop.imageUrl}}" alt="">
-    </div>
-    <!-- <div class="raiting-wrap">
+  <div class="name-wrap">
+    <p class="shop-name">{{ shop.name }}</p>
+  </div>
+  <div class="image-wrap">
+    <img src="{{ shop.imageUrl }}" alt="" />
+  </div>
+  <!-- <div class="raiting-wrap">
         <p class="raiting-score">{{shop.Raiting}}</p>
     </div> -->
-    
-    <p>DETAILS</p>
-</div>
 
+  <p>DETAILS</p>
+  <p *ngIf="isOwner()">
+    <a routerLink="/register">Add post</a>
+  </p>
+</div>
