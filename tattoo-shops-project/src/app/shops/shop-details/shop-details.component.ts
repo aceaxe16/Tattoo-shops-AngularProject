@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { Shop } from 'src/app/types/shop';
 import { UserService } from 'src/app/user/user.service';
+import { ShopService } from '../shopServices.service';
 
 @Component({
   selector: 'app-shop-details',
@@ -16,6 +17,7 @@ export class ShopDetailsComponent implements OnInit{
 
   constructor(private fb: FormBuilder,
     private userService:UserService,
+    private shopService: ShopService,
     private apiService:ApiService,
     private activeRoute:ActivatedRoute,
     private router: Router
@@ -49,18 +51,20 @@ export class ShopDetailsComponent implements OnInit{
     this.isPostMode = !this.isPostMode
   } 
 
-  createPost():void{
+  createPost(){
     if(this.from.invalid){return}
     const {
       imageUrl,
       description
     } = this.from.value;
     console.log(imageUrl, description);
-    
+    const shopId = this.shop?._id    
 
-    // this.shopService.createShop(name!, imageUrl!).subscribe((res) => {
-    //   this.router.navigate(['/shops']);     
-    // })
+    this.shopService.createPost(imageUrl!, description!, shopId!).subscribe(() => {
+      this.isPostMode = !this.isPostMode    
+    })
+
+    this.togglePostMode()
     
   }
 

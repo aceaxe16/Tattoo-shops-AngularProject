@@ -48,5 +48,14 @@ router.post('/create', verifyToken, async(req, res) => {
     }
 })
 
+router.post('/:shopId/create-post', verifyToken, (req, res) => {
+    const {imageUrl, description} = req.body;
+    const userId = req.userId;
+    const shopId = req.params.shopId;
+    res.status(200).send({imageUrl, description, userId, shopId}) 
+    
+
+})
+
 
 module.exports = router
