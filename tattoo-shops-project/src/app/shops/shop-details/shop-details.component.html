@@ -20,7 +20,7 @@
     <div *ngIf="postListIsEmplty()" class="no-posts">
       <p>No Posts have been added yet</p>
     </div>
-    <div *ngIf="postsList" class="posts-present">
+    <div *ngIf="!postListIsEmplty()" class="posts-present">
       <div *ngFor="let post of postsList" class="posts-container">
         <div class="single-post">
           <div class="image-container">
@@ -30,9 +30,7 @@
             <p>{{post.description}}</p>
           </div>
           <div class="buttons-container">
-            <a routerLink="{{post._id}}">Edit</a>
-            <br />
-            <a href="">Delete</a>
+            <a *ngIf="isOwner()" routerLink="{{post._id}}">Edit</a>            
           </div>
         </div>
       </div>
@@ -58,7 +56,7 @@
         <input type="text" name="description" formControlName="description" />
       </p>
 
-      <button class="crete-post-button" >Post</button>
+      <button class="crete-post-button">Post</button>
     </fieldset>
   </form>
 </div>

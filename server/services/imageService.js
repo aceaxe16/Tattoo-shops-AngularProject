@@ -5,3 +5,4 @@ exports.create = (ownerId, imageData, shopId) => TattooImage.create({...imageDat
 exports.getShopPosts = (shopId) => TattooImage.find({shopId:shopId}).lean();
 exports.getOne = (postId) => TattooImage.find({_id:postId}).lean();
 exports.edit = (postId, postData) => TattooImage.findByIdAndUpdate(postId, postData);
+exports.delete = (postId) => TattooImage.findByIdAndDelete(postId);

@@ -44,4 +44,9 @@ export class ShopService {
       description
     })
   }
+
+  deletePost(postId:string){
+    const {localServerPosts} = environment;
+    return this.http.get<string>(`${localServerPosts}/${postId}/delete`)
+  }
 }

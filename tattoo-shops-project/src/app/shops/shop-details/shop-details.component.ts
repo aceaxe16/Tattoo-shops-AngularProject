@@ -5,6 +5,7 @@ import { ApiService } from 'src/app/api.service';
 
 import { Shop } from 'src/app/types/shop';
 import { TattooPost } from '../../types/tattoo-post';
+import {User} from '../../types/user';
 
 import { UserService } from 'src/app/user/user.service';
 import { ShopService } from '../shopServices.service';
@@ -18,7 +19,16 @@ export class ShopDetailsComponent implements OnInit{
   shop:undefined | Shop;
   isPostMode: boolean = false;
   postsList: TattooPost[] = []
+  user: User | undefined = this.userService.user;
+  ownerId:string = ""
 
+  isOwner():boolean{
+    if(this.ownerId == this.user?._id){
+      return true
+    }else{
+      return false
+    }
+  }
   
 
   constructor(private fb: FormBuilder,
@@ -36,22 +46,17 @@ export class ShopDetailsComponent implements OnInit{
     this.shopService.getPosts(shopId!).subscribe((res) => {
       this.postsList = res
     })
-    
+     
   }
+
+  
 
   getShopInfo():void{
     const shopId = this.activeRoute.snapshot.params['shopId'];
     this.apiService.getOneTattooShop(shopId).subscribe((res) => {
-      this.shop = res.shop;     
+      this.shop = res.shop;  
+      this.ownerId = res.shop.ownerId;        
     })    
-  }
-
-  isOwner():boolean{
-    if(this.shop?.ownerId == this.userService.user?._id ){
-      return true
-    }else{
-      return false
-    }
   }
 
   from = this.fb.group({
@@ -69,10 +74,12 @@ export class ShopDetailsComponent implements OnInit{
       imageUrl,
       description
     } = this.from.value;
-    console.log(imageUrl, description);
+    
     const shopId = this.shop?._id    
-
+    console.log(this.postsList);
+    
     this.shopService.createPost(imageUrl!, description!, shopId!).subscribe(() => {
+      console.log(this.postsList);      
       this.isPostMode = !this.isPostMode    
     })
        
@@ -85,5 +92,12 @@ export class ShopDetailsComponent implements OnInit{
       return false
     }
   }
+
+  // deletePost(){
+  //   if(window.confirm('Are sure you want to delete this item ?')){
+  //     console.log("deleted");
+      
+  //    }
+  // }
 
 }

@@ -40,5 +40,15 @@ router.put('/:postId', async(req, res) =>{
     }
 })
 
+router.get('/:postId/delete', async(req, res) => {
+    const postId = req.params.postId;
+    try{
+        const deletedPost = await imageService.delete(postId);
+        return res.status(200).send('deleted')
+    }catch(error){
+        return res.status(400).send("Error: " + error)
+    }
+})
+
 
 module.exports = router
