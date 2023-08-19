@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { FormBuilder } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { Shop } from 'src/app/types/shop';
 import { UserService } from 'src/app/user/user.service';
@@ -11,8 +12,14 @@ import { UserService } from 'src/app/user/user.service';
 })
 export class ShopDetailsComponent implements OnInit{
   shop:undefined | Shop;
+  isPostMode: boolean = false;
 
-  constructor(private userService:UserService, private apiService:ApiService, private activeRoute:ActivatedRoute){}
+  constructor(private fb: FormBuilder,
+    private userService:UserService,
+    private apiService:ApiService,
+    private activeRoute:ActivatedRoute,
+    private router: Router
+    ){}
 
   ngOnInit(): void {
     this.getShopInfo();   
@@ -21,13 +28,8 @@ export class ShopDetailsComponent implements OnInit{
   getShopInfo():void{
     const shopId = this.activeRoute.snapshot.params['shopId'];
     this.apiService.getOneTattooShop(shopId).subscribe((res) => {
-      this.shop = res.shop;  
-      console.log(res.shop.ownerId);
-      
-      
-    })
-    console.log(this.userService.user);
-    
+      this.shop = res.shop;     
+    })    
   }
 
   isOwner():boolean{
@@ -36,6 +38,30 @@ export class ShopDetailsComponent implements OnInit{
     }else{
       return false
     }
+  }
+
+  from = this.fb.group({
+    imageUrl:[''],
+    description:[''],
+  })
+  
+  togglePostMode():void{
+    this.isPostMode = !this.isPostMode
+  } 
+
+  createPost():void{
+    if(this.from.invalid){return}
+    const {
+      imageUrl,
+      description
+    } = this.from.value;
+    console.log(imageUrl, description);
+    
+
+    // this.shopService.createShop(name!, imageUrl!).subscribe((res) => {
+    //   this.router.navigate(['/shops']);     
+    // })
+    
   }
 
 }

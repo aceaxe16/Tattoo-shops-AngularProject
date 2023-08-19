@@ -18,4 +18,8 @@ export class ShopService {
              
     })
   }
+
+  cretePost(omageUrl:string, description:string){
+    
+  }
 }
