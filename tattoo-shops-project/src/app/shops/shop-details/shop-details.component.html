@@ -9,41 +9,56 @@
         <p class="raiting-score">{{shop.Raiting}}</p>
     </div> -->
 
-  <p>DETAILS</p>
+  
   <div *ngIf="isOwner()">
-    <button class="display-crete-post-window" (click)="togglePostMode()">Create Post</button>
+    <button class="display-crete-post-window" (click)="togglePostMode()">
+      Create Post
+    </button>
+  </div>
+
+  <div>
+    <div *ngIf="postListIsEmplty()" class="no-posts">
+      <p>No Posts have been added yet</p>
+    </div>
+    <div *ngIf="postsList" class="posts-present">
+      <div *ngFor="let post of postsList" class="posts-container">
+        <div class="single-post">
+          <div class="image-container">
+            <img src="{{post.imageUrl}}" alt="" />
+          </div>
+          <div class="description-container">
+            <p>{{post.description}}</p>
+          </div>
+          <div class="buttons-container">
+            <a routerLink="{{post._id}}">Edit</a>
+            <br />
+            <a href="">Delete</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="new-shop-container" *ngIf="isPostMode">
+<div class="new-post-container" *ngIf="isPostMode">
   <form class="login" [formGroup]="from" (ngSubmit)="createPost()">
-      <fieldset>
-          <h2>Create Post</h2>           
-  
-          <p>
-              <label for="imageUrl"><span><i>ImageUrl</i></span></label>
-              <input 
-              type="text"
-              name="imageUrl"
-              formControlName="imageUrl"
-              >
-          </p>
-          <p>
-              <label for="description"><span><i>Name</i></span></label>
-              <input 
-              type="text"
-              name="description"
-              formControlName="description"
-              >
-          </p>
-  
-         <button class="crete-post-button" (click)="createPost()">Post</button>
-  
-         
-  
-      </fieldset>
+    <fieldset>
+      <h2>Create Post</h2>
+
+      <p>
+        <label for="imageUrl"
+          ><span><i>ImageUrl</i></span></label
+        >
+        <input type="text" name="imageUrl" formControlName="imageUrl" />
+      </p>
+      <p>
+        <label for="description"
+          ><span><i>Name</i></span></label
+        >
+        <input type="text" name="description" formControlName="description" />
+      </p>
+
+      <button class="crete-post-button" (click)="createPost()">Post</button>
+    </fieldset>
   </form>
- 
 </div>
-
-

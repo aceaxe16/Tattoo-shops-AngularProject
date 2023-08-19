@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
+
 import { Shop } from 'src/app/types/shop';
+import { TattooPost } from '../../types/tattoo-post';
+
 import { UserService } from 'src/app/user/user.service';
 import { ShopService } from '../shopServices.service';
 
@@ -14,17 +17,26 @@ import { ShopService } from '../shopServices.service';
 export class ShopDetailsComponent implements OnInit{
   shop:undefined | Shop;
   isPostMode: boolean = false;
+  postsList: TattooPost[] = []
+
+  
 
   constructor(private fb: FormBuilder,
     private userService:UserService,
     private shopService: ShopService,
     private apiService:ApiService,
     private activeRoute:ActivatedRoute,
-    private router: Router
+    private router: Router,
     ){}
 
   ngOnInit(): void {
-    this.getShopInfo();   
+    this.getShopInfo();
+    const shopId = this.activeRoute.snapshot.params['shopId'];    
+    
+    this.shopService.getPosts(shopId!).subscribe((res) => {
+      this.postsList = res
+    })
+    
   }
 
   getShopInfo():void{
@@ -63,9 +75,15 @@ export class ShopDetailsComponent implements OnInit{
     this.shopService.createPost(imageUrl!, description!, shopId!).subscribe(() => {
       this.isPostMode = !this.isPostMode    
     })
+       
+  }
 
-    this.togglePostMode()
-    
+  postListIsEmplty():boolean{
+    if(this.postsList.length == 0){
+      return true
+    }else{
+      return false
+    }
   }
 
 }
