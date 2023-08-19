@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
-import { FormBuilder } from '@angular/forms';
-import { User } from 'src/app/types/user';
+import { FormBuilder, Validators } from '@angular/forms';
+
+import { appEmailValidator } from 'src/app/shared/validators/email.validator';
+import { DEFAULT_EMAIL_DOMAIN } from 'src/app/shared/constants';
 
 
 interface Profile{
@@ -15,13 +17,7 @@ interface Profile{
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit{
-  user:User = {
-    "_id": "",
-    "email": "",
-    "username": "",
-    "password": "",
-    "__v": 0
-  }
+  
 
   isEditMode:boolean = false;
 
@@ -31,8 +27,8 @@ export class ProfileComponent implements OnInit{
   };
 
   form= this.fb.group({
-    email:[""],
-    username:[""],
+    email:['', [Validators.required,  appEmailValidator(DEFAULT_EMAIL_DOMAIN)]],
+    username:['', [Validators.required, Validators.minLength(3)]],
     
   })
 
@@ -42,7 +38,7 @@ export class ProfileComponent implements OnInit{
   
 
    ngOnInit(): void {    
-    const {username, email, } = this.userService.user!;
+    const {username, email, } = this.userService.user!;    
     this.profileDetails ={
       username,
       email,

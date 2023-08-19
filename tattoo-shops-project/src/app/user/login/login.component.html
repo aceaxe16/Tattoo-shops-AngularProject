@@ -7,9 +7,18 @@
                 <input 
                 type="email"
                 name="email"
+                placeholder="jhonybones@gmail.com"
                 formControlName="email"
                 >
             </p>
+            <ng-container *ngIf="form.get('email')?.touched">
+                <p class="error" *ngIf="form.get('email')?.errors?.['required']">
+                    Email is required!
+                </p>
+                <p class="error" *ngIf="form.get('email')?.errors?.['appEmailValidator']">
+                    Email is not valid!
+                </p>
+            </ng-container>
     
             <p>
                 <label for="password"><span><i></i></span></label>
@@ -19,10 +28,19 @@
                 formControlName="password"
                 >
             </p>
+            <ng-container *ngIf="form.get('passGroup')?.get('password')?.touched">
+
+                <p class="error" *ngIf="form.get('passGroup')?.get('password')?.errors?.['required']">
+                    Password is required!
+                </p>
+                <p class="error" *ngIf="form.get('passGroup')?.get('password')?.errors?.['minlength']">
+                    Password must be at least {{form.get('passGroup')?.get('password')?.errors?.['minlength']?.['requiredLength']}} characters!
+                </p>
+            </ng-container>
     
-           <button>Login</button>
+           <button [disabled]="form.invalid">Login</button>
     
-           <p>
+           <p class="text-center">
             Dont have an account?
             <a routerLink="/register">Register</a>
            </p>

@@ -10,6 +10,7 @@ import { ShopsModule } from './shops/shops.module';
 import { UserModule } from './user/user.module';
 import { appIntercentorProvider } from './app.interceptor';
 import { AuthGuard } from './auth.guard';
+import { SharedModule } from './shared/shared.module';
 
 
 
@@ -25,7 +26,8 @@ import { AuthGuard } from './auth.guard';
     CoreModule,
     HttpClientModule,
     ShopsModule,
-    UserModule
+    UserModule,
+    SharedModule
   ],
   providers: [appIntercentorProvider, AuthGuard],
   bootstrap: [AppComponent]

@@ -1,0 +1,1 @@
+export const DEFAULT_EMAIL_DOMAIN =['bg', 'com']
