@@ -9,5 +9,5 @@ const tattooImageSchema = new Schema({
     shopId: String
 })
 
-const TattoImage = mongoose.model('TattooImage', tattooImageSchema);
-module.exports = TattoImage;
+const TattooImage = mongoose.model('TattooImage', tattooImageSchema);
+module.exports = TattooImage;

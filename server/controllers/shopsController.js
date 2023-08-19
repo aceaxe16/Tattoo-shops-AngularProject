@@ -6,6 +6,8 @@ const mongoose = require('mongoose');
 
 const { verifyToken } = require('../tokenVerify');
 const shopService = require('../services/shopServices');
+const imageServices = require('../services/imageService');
+const { async } = require('rxjs');
 
 
 
@@ -41,18 +43,23 @@ router.post('/create', verifyToken, async(req, res) => {
     
     try{
         await  shopService.create(req.userId, shopData);        
-        res.status(200).send(shopData)
+        return res.status(200).send(shopData)
 
     }catch(error){
         return res.status(400).send('Error: ' + error )
     }
 })
 
-router.post('/:shopId/create-post', verifyToken, (req, res) => {
-    const {imageUrl, description} = req.body;
+router.post('/:shopId/create-post', verifyToken, async(req, res) => {
+    const imageData = req.body;
     const userId = req.userId;
     const shopId = req.params.shopId;
-    res.status(200).send({imageUrl, description, userId, shopId}) 
+    try{
+        const newPost = await imageServices.create(userId, imageData, shopId)
+        return res.status(200).send(newPost);
+    }catch(error){
+        return res.status(400).send("Error: " + error)
+    }
     
 
 })
