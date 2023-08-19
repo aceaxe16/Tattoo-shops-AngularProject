@@ -9,7 +9,7 @@ const db = 'mongodb+srv://branimir88:vgxRxOYslloFK25F@cluster0.98gga50.mongodb.n
 mongoose.connect(db);
 
 
-router.get('/:shopId', async(req, res) => {
+router.get('/:shopId/posts', async(req, res) => {
     const shopId = req.params.shopId;
     try{
         const shopPosts = await imageService.getShopPosts(shopId);
@@ -19,8 +19,8 @@ router.get('/:shopId', async(req, res) => {
     }
 })
 
-router.get('/:postId', async(req, res) => {
-    const postId = req.params.postId;
+router.get('/:postId/post', async(req, res) => {
+    const postId = req.params.postId;    
     try{
         const currentPost = await imageService.getOne(postId);
         return res.status(200).send(currentPost)

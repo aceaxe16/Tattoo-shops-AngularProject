@@ -1,7 +1,7 @@
-<div class="edit-post-container">
-    <form class="login" [formGroup]="from" (ngSubmit)="editPost()">
+<div class="new-post-container" >
+    <form class="login" [formGroup]="from" (ngSubmit)="createPost()">
       <fieldset>
-        <h2>Edit Post</h2>
+        <h2>Create Post</h2>
   
         <p>
           <label for="imageUrl"
@@ -16,10 +16,7 @@
           <input type="text" name="description" formControlName="description" />
         </p>
   
-        <button class="crete-post-button">Edit</button>
-        <a routerLink="/shops/{{post!.shopId}}" (click)="deletePost()">Delete</a>
-        
+        <button class="crete-post-button">Post</button>
       </fieldset>
     </form>
   </div>
-  

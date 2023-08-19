@@ -16,11 +16,11 @@ import { ShopService } from '../shopServices.service';
   styleUrls: ['./shop-details.component.css']
 })
 export class ShopDetailsComponent implements OnInit{
-  shop:undefined | Shop;
-  isPostMode: boolean = false;
-  postsList: TattooPost[] = []
+  shop:undefined | Shop;  
+  postsList: TattooPost[] = [];
   user: User | undefined = this.userService.user;
-  ownerId:string = ""
+  ownerId:string = "";
+  shopId = this.activeRoute.snapshot.params['shopId']
 
   isOwner():boolean{
     if(this.ownerId == this.user?._id){
@@ -47,9 +47,7 @@ export class ShopDetailsComponent implements OnInit{
       this.postsList = res
     })
      
-  }
-
-  
+  }  
 
   getShopInfo():void{
     const shopId = this.activeRoute.snapshot.params['shopId'];
@@ -58,32 +56,7 @@ export class ShopDetailsComponent implements OnInit{
       this.ownerId = res.shop.ownerId;        
     })    
   }
-
-  from = this.fb.group({
-    imageUrl:[''],
-    description:[''],
-  })
-  
-  togglePostMode():void{
-    this.isPostMode = !this.isPostMode
-  } 
-
-  createPost(){
-    if(this.from.invalid){return}
-    const {
-      imageUrl,
-      description
-    } = this.from.value;
     
-    const shopId = this.shop?._id    
-    console.log(this.postsList);
-    
-    this.shopService.createPost(imageUrl!, description!, shopId!).subscribe(() => {
-      console.log(this.postsList);      
-      this.isPostMode = !this.isPostMode    
-    })
-       
-  }
 
   postListIsEmplty():boolean{
     if(this.postsList.length == 0){

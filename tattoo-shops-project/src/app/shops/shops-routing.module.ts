@@ -6,6 +6,7 @@ import { CreateNewShopComponent } from './create-new-shop/create-new-shop.compon
 import { AuthGuard } from '../auth.guard';
 
 import { EditPostComponent } from './edit-post/edit-post.component';
+import { AddPostComponent } from './add-post/add-post.component';
 
 
 
@@ -27,9 +28,14 @@ const routes: Routes = [
                     component: ShopDetailsComponent
                 },
                 {
+                    path:'create-post',
+                    component:AddPostComponent
+                },
+                {
                     path:':postId',
                     component: EditPostComponent
-                }
+                },
+                
             ]
             
         }

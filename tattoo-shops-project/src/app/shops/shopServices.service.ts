@@ -29,12 +29,12 @@ export class ShopService {
 
   getPosts(shopId:string){
     const {localServerPosts}  = environment;
-    return this.http.get<TattooPost[]>(`${localServerPosts}/${shopId}`)
+    return this.http.get<TattooPost[]>(`${localServerPosts}/${shopId}/posts`)
   }
 
   getCurrentPost(postId:string){
     const {localServerPosts} = environment;
-    return this.http.get<any>(`${localServerPosts}/${postId}`)
+    return this.http.get<any>(`${localServerPosts}/${postId}/post`)
   }
 
   editPost(imageUrl:string, description: string, postId:string){

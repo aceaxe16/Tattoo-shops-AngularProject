@@ -23,14 +23,16 @@ export class EditPostComponent implements OnInit{
   })
 
   ngOnInit(): void {
-    const shopId = this.activeRoute.snapshot.params['shopId'] 
-    this.shopService.getCurrentPost(shopId).subscribe((res) => {
+    const postId = this.activeRoute.snapshot.params['postId']
+    console.log(postId);
+     
+    this.shopService.getCurrentPost(postId).subscribe((res) => {     
+      
       this.post = res[0]
       const data = res[0]
       const imageUrl = data.imageUrl;
       const description = data.description;
-      console.log(data);
-      
+      console.log(data);    
       
       
       this.from.setValue({

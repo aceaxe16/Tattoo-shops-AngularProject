@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewTattooImageComponent } from './new-tattoo-image/new-tattoo-image.component';
 import { CurrentTattooComponent } from './current-tattoo/current-tattoo.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
+import { AddPostComponent } from './add-post/add-post.component';
 
 
 
@@ -21,6 +22,7 @@ import { EditPostComponent } from './edit-post/edit-post.component';
     NewTattooImageComponent,
     CurrentTattooComponent,
     EditPostComponent,
+    AddPostComponent,
     
     
   ],

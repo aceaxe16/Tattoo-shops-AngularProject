@@ -11,9 +11,7 @@
 
   
   <div *ngIf="isOwner()">
-    <button class="display-crete-post-window" (click)="togglePostMode()">
-      Create Post
-    </button>
+    <a routerLink="/shops/{{shopId}}/create-post">Create Post</a>
   </div>
 
   <div>
@@ -38,25 +36,4 @@
   </div>
 </div>
 
-<div class="new-post-container" *ngIf="isPostMode">
-  <form class="login" [formGroup]="from" (ngSubmit)="createPost()">
-    <fieldset>
-      <h2>Create Post</h2>
 
-      <p>
-        <label for="imageUrl"
-          ><span><i>ImageUrl</i></span></label
-        >
-        <input type="text" name="imageUrl" formControlName="imageUrl" />
-      </p>
-      <p>
-        <label for="description"
-          ><span><i>Name</i></span></label
-        >
-        <input type="text" name="description" formControlName="description" />
-      </p>
-
-      <button class="crete-post-button">Post</button>
-    </fieldset>
-  </form>
-</div>
