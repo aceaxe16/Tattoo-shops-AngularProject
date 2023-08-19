@@ -19,5 +19,15 @@ router.get('/:shopId', async(req, res) => {
     }
 })
 
+router.get('/:postId', async(req, res) => {
+    const postId = req.params.postId;
+    try{
+        const currentPost = await imageService.getOne(postId);
+        return res.status(200).send(currentPost)
+    }catch(error){
+        return 'Error: ' + error
+    }
+})
+
 
 module.exports = router

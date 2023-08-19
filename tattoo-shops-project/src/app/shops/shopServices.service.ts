@@ -31,4 +31,9 @@ export class ShopService {
     const {localServerPosts}  = environment;
     return this.http.get<TattooPost[]>(`${localServerPosts}/${shopId}`)
   }
+
+  getCurrentPost(postId:string){
+    const {localServerPosts} = environment;
+    return this.http.get<any>(`${localServerPosts}/${postId}`)
+  }
 }
