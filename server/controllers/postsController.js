@@ -25,7 +25,18 @@ router.get('/:postId', async(req, res) => {
         const currentPost = await imageService.getOne(postId);
         return res.status(200).send(currentPost)
     }catch(error){
-        return 'Error: ' + error
+        return res.status(400).send("Error: " + error)
+    }
+})
+
+router.put('/:postId', async(req, res) =>{
+    const postId = req.params.postId;
+    const postData = req.body
+    try{
+        const editedPost = await imageService.edit(postId, postData);
+        return res.status(200).send(editedPost)
+    }catch(error){
+        return res.status(400).send("Error: " + error)
     }
 })
 

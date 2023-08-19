@@ -36,4 +36,12 @@ export class ShopService {
     const {localServerPosts} = environment;
     return this.http.get<any>(`${localServerPosts}/${postId}`)
   }
+
+  editPost(imageUrl:string, description: string, postId:string){
+    const {localServerPosts} = environment;
+    return this.http.put<any>(`${localServerPosts}/${postId}`,{
+      imageUrl,
+      description
+    })
+  }
 }
