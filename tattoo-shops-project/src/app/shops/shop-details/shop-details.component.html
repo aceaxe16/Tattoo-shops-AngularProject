@@ -1,20 +1,22 @@
 <div *ngIf="shop" class="shop-container">
-  <div class="name-wrap">
-    <p class="shop-name">{{ shop.name }}</p>
-  </div>
-  <div class="image-wrap">
-    <img src="{{ shop.imageUrl }}" alt="" />
-  </div>
-  <!-- <div class="raiting-wrap">
+  <div class="shop-wrap">
+    <div class="name-wrap">
+      <p class="shop-name">{{ shop.name }}</p>
+    </div>
+    <div class="image-wrap">
+      <img src="{{ shop.imageUrl }}" alt="" />
+    </div>
+    <!-- <div class="raiting-wrap">
         <p class="raiting-score">{{shop.Raiting}}</p>
     </div> -->
 
-  
-  <div *ngIf="isOwner()">
-    <a routerLink="/shops/{{shopId}}/create-post">Create Post</a>
+    <div class="button-wrap" >
+      <a class="create-btn" routerLink="/shops/{{ shopId }}/create-post"
+        >Create Post</a >
+    </div>
   </div>
 
-  <div>
+  <div class="post-container">
     <div *ngIf="postListIsEmplty()" class="no-posts">
       <p>No Posts have been added yet</p>
     </div>
@@ -22,18 +24,16 @@
       <div *ngFor="let post of postsList" class="posts-container">
         <div class="single-post">
           <div class="image-container">
-            <img src="{{post.imageUrl}}" alt="" />
+            <img src="{{ post.imageUrl }}" alt="" />
           </div>
           <div class="description-container">
-            <p>{{post.description}}</p>
+            <p>{{ post.description }}</p>
           </div>
           <div class="buttons-container">
-            <a *ngIf="isOwner()" routerLink="{{post._id}}">Edit</a>            
+            <a *ngIf="isOwner()" routerLink="{{ post._id }}">Edit</a>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-

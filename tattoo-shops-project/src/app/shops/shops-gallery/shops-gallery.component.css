@@ -2,17 +2,38 @@
     display: flex;
     align-content: center;
     justify-content: center;
-    gap: 2em;
-   
+    gap: 2em;  
+}
+
+.shop-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    
 }
 
 .shop-image{
-    width: 25em;
+    width: 25em;  
     
-    
+}
+.shop-name-wrapper{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.shop-name{
+    font-size: 20px;
 }
 
 img{
-    height: auto;
+    height: 20em;
     width: 25em;
+}
+
+.details-btn{
+    display: flex;
+    justify-content: center;
+    border: 2px solid;
 }

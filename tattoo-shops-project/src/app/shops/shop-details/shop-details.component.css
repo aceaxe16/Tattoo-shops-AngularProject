@@ -2,14 +2,39 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-content:center;
+    align-content: center;
 }
 
 .image-wrap{
     width: 25em;
 }
 
+.post-container{
+    display: flex;    
+}
+
+.posts-present{
+    flex: 33.33%;
+    padding: 5px;
+}
+
 img{
     width: 25em;
     height: auto;
+}
+
+.create-btn{
+    border: 2px solid;
+    padding: 5px;
+}
+
+.button-wrap{
+    margin-bottom: 5em;
+    margin-top: 2em;
+}
+
+.shop-wrap{
+    display: flex;
+    flex-direction: column;
+    align-content:center;
 }
