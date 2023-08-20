@@ -10,7 +10,7 @@
         <p class="raiting-score">{{shop.Raiting}}</p>
     </div> -->
 
-    <div class="button-wrap" >
+    <div class="button-wrap" *ngIf="isOwner()" >
       <a class="create-btn" routerLink="/shops/{{ shopId }}/create-post"
         >Create Post</a >
     </div>

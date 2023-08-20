@@ -37,4 +37,5 @@ img{
     display: flex;
     flex-direction: column;
     align-content:center;
+    margin-bottom: 3em;
 }
