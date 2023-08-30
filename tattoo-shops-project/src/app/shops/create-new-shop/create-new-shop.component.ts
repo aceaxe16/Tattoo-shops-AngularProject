@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ShopService } from 'src/app/shops/shopServices.service';
 
@@ -10,8 +10,8 @@ import { ShopService } from 'src/app/shops/shopServices.service';
 })
 export class CreateNewShopComponent {
   from = this.fb.group({
-    name:[''],
-    imageUrl:['']
+    name:['', [Validators.required, Validators.minLength(4)]],
+    imageUrl:['',[Validators.required, Validators.minLength(4)]]
   })
   constructor(private fb: FormBuilder, private router:Router, private shopService: ShopService){}
 
