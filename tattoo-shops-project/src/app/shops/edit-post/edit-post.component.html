@@ -15,10 +15,12 @@
           >
           <input type="text" name="description" formControlName="description" />
         </p>
-  
-        <button class="crete-post-button">Edit</button>
-        <a routerLink="/shops/{{post!.shopId}}" (click)="deletePost()">Delete</a>
-        
+        <div class="btn-container">
+
+          <button class="create-post-btn">Edit</button>
+          <a routerLink="/shops/{{post!.shopId}}" (click)="deletePost()" class="delete-btn">Delete</a>
+        </div>
+          
       </fieldset>
     </form>
   </div>

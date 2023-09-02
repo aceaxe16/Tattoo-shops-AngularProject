@@ -1,0 +1,26 @@
+.btn-container{
+    display: flex;
+    
+}
+
+.delete-btn{
+    font-size: 16px;         
+    margin: 0.5em;    
+    padding: 0.5em;
+    color: aliceblue;
+    background-color: red;
+    text-decoration: none;
+    
+}
+
+.create-post-btn{    
+    font-size: 16px;    
+    height: 2em; 
+    padding: 0.5em;   
+    color: aliceblue;
+    background-color: blue;
+}
+
+.create-post-btn:hover{
+    cursor: pointer;
+}

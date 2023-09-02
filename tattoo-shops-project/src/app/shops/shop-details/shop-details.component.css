@@ -10,12 +10,19 @@
 }
 
 .post-container{
-    display: flex;    
+    display: flex; 
+    justify-content: center;   
 }
 
-.posts-present{
-    flex: 33.33%;
-    padding: 5px;
+.posts-present{   
+    display: flex;
+    align-content: center;
+    justify-content: center; 
+    padding: 2em;
+}
+
+.single-post{
+    padding: 2em;
 }
 
 img{
